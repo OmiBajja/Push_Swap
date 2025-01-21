@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/21 17:19:31 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 00:34:56 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b)
 	i = -1;
 	while (tab[++i])
 	{
-		ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
+		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
 		node = node->next;
 	}
 	ft_sorting(stack_a, stack_b, i, nb);
@@ -75,17 +75,17 @@ int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b)
 	ft_printf("\n\n");
 	while (node)
 	{
-		ft_printf("Stack A:\n");
-		ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
+		//ft_printf("Stack A:\n");
+		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
 		node = node->next;
 	}
 	node = *stack_b;
 	i = -1;
-	ft_printf("\n\n");
+	//ft_printf("\n\n");
 	while (node)
 	{
-		ft_printf("Stack B:\n");
-		ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
+		//ft_printf("Stack B:\n");
+		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
 		node = node->next;
 	}
 	return (0);

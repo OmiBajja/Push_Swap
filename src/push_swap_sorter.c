@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/21 17:02:44 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 00:37:34 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,12 @@
 
 void	ft_sorting(t_liste **stack_a, t_liste **stack_b, int size, int quartile)
 {
-	t_liste *temp;
-	int		count;
-	
-	count = 0;
+	t_liste	*temp;
+
 	temp = *stack_a;
 	if (is_sorted(stack_a) == 0)
 	{
-		//ft_printf("Sorted\n");
+		ft_printf("Sorted\n");
 		return ;
 	}
 	else
@@ -34,9 +32,8 @@ void	ft_sorting(t_liste **stack_a, t_liste **stack_b, int size, int quartile)
 				ft_rotate_a(stack_a);
 		}
 	}
-	//ft_printf("Q3: %d\n",quartile);
 	ft_3sorter(stack_a);
 	size = ft_stacksize(*stack_b);
-	ft_pushmax(stack_a, stack_b, count, size);	
+	ft_pushmax(stack_a, stack_b, size);
 }
 
