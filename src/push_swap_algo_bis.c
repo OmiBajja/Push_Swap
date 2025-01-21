@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_algo_bis.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: dwa <obajja@student.42.fr>              +#+  +:+       +#+        */
+/*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/14 20:59:14 by dwa            #+#    #+#             */
-/*   Updated: 2025/01/21 16:31:27 by dwa           ###   ########.fr       */
+/*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
+/*   Updated: 2025/01/21 20:37:06 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ void	ft_rotate_a(t_liste **stack_a)
 void	ft_rotate_b(t_liste **stack_b)
 {
 	ft_rotator(stack_b);
-	ft_printf("rb\n");
+	//ft_printf("rb\n");
 }
 
 void	ft_rotate_rr(t_liste **stack_a, t_liste **stack_b)

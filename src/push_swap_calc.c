@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/21 17:04:51 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/21 20:40:50 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,6 @@ void	ft_min_max_calculator(t_liste **stack, int *min, int *max)
 {
 	t_liste	*temp;
 
-	(void)stack;
 	temp = *stack;
 	*min = temp->number;
 	*max = temp->number;
@@ -77,7 +76,6 @@ void	ft_3sorter(t_liste **stack_a)
 	min = 0;
 	max = 0;
 	ft_min_max_calculator(stack_a, &min, &max);
-	//ft_printf("Max:%d \nMin:%d \n", max, min);
 	if ((*stack_a)->number == max)
 	{
 		ft_rotate_a(stack_a);

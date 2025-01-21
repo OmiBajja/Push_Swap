@@ -2,7 +2,7 @@ OBJDIR = obj
 SRCDIR = src
 CC = cc
 FLAGS = -Wall -Wextra -Werror -g3
-NAME = a.out
+NAME = push_swap
 SRCS = src/push_swap.c src/push_swap_utils.c src/push_swap_algo.c src/push_swap_sorts.c src/push_swap_algo_bis.c src/push_swap_algo_ter.c src/push_swap_sorter.c src/push_swap_calc.c src/push_swap_calc_bis.c 
 OBJ = $(SRCS:.c=.o)
 OBJ := $(patsubst $(SRCDIR)/%, $(OBJDIR)/%, $(OBJ))
