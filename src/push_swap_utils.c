@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:28 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/21 16:58:01 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 01:40:01 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ void	ft_sort_int_tab(int *tab, int size)
 	}
 }
 
-int	ft_quartile(char **tab, int size)
+int	ft_quartile(char **tab, int size, int *mediane)
 {
 	int	i;
 	int	*arr;
@@ -83,5 +83,6 @@ int	ft_quartile(char **tab, int size)
 	while (tab[++i])
 		arr[i] = ft_atoi(tab[i]);
 	ft_sort_int_tab(arr, size);
+	*mediane = arr[size/2];
 	return (arr[size - 3]);
 }

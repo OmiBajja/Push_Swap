@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/22 00:34:56 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 01:48:08 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ long int	ft_atoi_long(const char *str)
 	return (n * s);
 }
 
-int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b)
+int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int mediane)
 {
 	struct s_liste	*new_node;
 	struct s_liste	*node;
@@ -61,7 +61,7 @@ int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b)
 		node->next = new_node;
 		node = node->next;
 	}
-	nb = ft_quartile(tab, i);
+	nb = ft_quartile(tab, i, &mediane);
 	node = *stack_a;
 	i = -1;
 	while (tab[++i])
@@ -69,7 +69,7 @@ int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b)
 		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
 		node = node->next;
 	}
-	ft_sorting(stack_a, stack_b, i, nb);
+	ft_sorting(stack_a, stack_b, mediane, nb);
 	node = *stack_a;
 	i = -1;
 	ft_printf("\n\n");
@@ -163,7 +163,7 @@ int	main(int argc, char **argv)
 		if (i < 0)
 			ft_printf("Error: %d", i);
 		else
-			ft_lister(tab, &stack_a, &stack_b);
+			ft_lister(tab, &stack_a, &stack_b, i);
 		ft_freestrs(tab);
 		ft_lstclear_push(&stack_a, &stack_b);
 		return (0);
