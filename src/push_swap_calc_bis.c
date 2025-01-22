@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/22 01:31:14 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 17:35:02 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ void	ft_max_two_calculator(t_liste **stack, int max, int *max_two)
 	t_liste	*temp;
 
 	temp = *stack;
-	*max_two = temp->number;
+	*max_two = -2147483648;
 	while (temp != NULL)
 	{
 		if (temp->number > *max_two && temp->number < max)
@@ -43,11 +43,13 @@ void	ft_max_two_calculator(t_liste **stack, int max, int *max_two)
 
 short	ft_relative_index(int index, int index2, int size)
 {
+	if (index2 == -1)
+		return (0);
 	if (index > size / 2)
 		index = (size - index) + 1;
 	if (index2 > size / 2)
 		index2 = (size - index2) + 1;
-	if (index < index2)
+	if (index <= index2)
 		return (0);
 	else
 		return (1);
@@ -57,13 +59,12 @@ void	ft_pushopti(t_liste **stack_a, t_liste **stack_b, int max, int index)
 {
 	int	size;
 
-	//ft_printf("Max:%d\n Number:%d\n", max, (*stack_b)->number);
 	if (!stack_b || !(*stack_b))
 		return ;
 	size = ft_stacksize(*stack_b);
 	if (index == -1 || size == 0)
 		return ;
-	if (index <= size / 2)
+	if (index <= size / 2 || size == 1)
 	{
 		while ((*stack_b)->number != max)
 			ft_rotate_b(stack_b);
@@ -77,23 +78,24 @@ void	ft_pushopti(t_liste **stack_a, t_liste **stack_b, int max, int index)
 	}
 }
 
-void	ft_pushmax(t_liste **stack_a, t_liste **stack_b, int size)
+void	ft_pushmax(t_liste **stack_a, t_liste **stack_b, int size, int	index2)
 {
 	int	max;
 	int	max2;
 	int	index;
-	int	index2;
 
-	index = -1;
 	while (ft_stacksize(*stack_b) != 0)
 	{
+		index2 = -1;
 		size = ft_stacksize(*stack_b);
 		ft_min_max_calculator(stack_b, &index, &max);
 		index = get_index(max, stack_b);
-		ft_max_two_calculator(stack_b, max, &max2);
-		index2 = get_index(max2, stack_b);
-		if (index == -1 && index2 == -1)
-			return ;
+		if (ft_stacksize(*stack_b) > 1 )
+		{
+			ft_max_two_calculator(stack_b, max, &max2);
+			index2 = get_index(max2, stack_b);
+		}
+		//ft_printf("Max:%d   Max2:%d\n Index:%d Number:%d\n", max, max2, (*stack_b)->index, (*stack_b)->number);
 		if (ft_relative_index(index, index2, size) == 0)
 			ft_pushopti(stack_a, stack_b, max, index);
 		else if (ft_relative_index(index, index2, size) == 1)

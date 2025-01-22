@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/22 01:48:08 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 18:40:34 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ long int	ft_atoi_long(const char *str)
 	return (n * s);
 }
 
-int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int mediane)
+int	 ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int i)
 {
 	struct s_liste	*new_node;
 	struct s_liste	*node;
-	int				i;
+	int				*arr;
 	int				nb;
 
 	i = 0;
@@ -61,33 +61,8 @@ int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int mediane)
 		node->next = new_node;
 		node = node->next;
 	}
-	nb = ft_quartile(tab, i, &mediane);
-	node = *stack_a;
-	i = -1;
-	while (tab[++i])
-	{
-		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
-		node = node->next;
-	}
-	ft_sorting(stack_a, stack_b, mediane, nb);
-	node = *stack_a;
-	i = -1;
-	ft_printf("\n\n");
-	while (node)
-	{
-		//ft_printf("Stack A:\n");
-		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
-		node = node->next;
-	}
-	node = *stack_b;
-	i = -1;
-	//ft_printf("\n\n");
-	while (node)
-	{
-		//ft_printf("Stack B:\n");
-		//ft_printf("Index: %d, Numero: %d\n", node->index, node->number);
-		node = node->next;
-	}
+	arr = ft_array(tab, i);
+	ft_sorting(stack_a, stack_b, arr, i);
 	return (0);
 }
 
