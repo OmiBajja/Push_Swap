@@ -40,7 +40,8 @@ int					get_closest_small(int mid, t_liste **stack);
 int					ft_stacksize(t_liste *stack);
 void				ft_3sorter(t_liste **stack_a);
 int					get_index(int to_find, t_liste **stack);
-void				ft_pushmax(t_liste **stack_a, t_liste **stack_b, int size, int index2);
+void				ft_pushmax(t_liste **stack_a, t_liste **stack_b,
+						int index2);
 void				ft_pushopti(t_liste **stack_a, t_liste **stack_b, int max,
 						int index);
 short				ft_relative_index(int index, int index2, int size);
@@ -52,5 +53,11 @@ void				ft_secondhalf(t_liste **stack_a, t_liste **stack_b,
 						int mediane, int quartile);
 int					ft_findqoneqthree(int *arr, int *q1, int *q3, int size);
 void				ft_firstquarter(t_liste **stack_a, t_liste **stack_b,
-					int q1);
+						int q1, int mediane);
+int					ft_findmidthird(int *arr, int *q1, int *q3, int size);
+void				ft_lastthird(t_liste **stack_a, t_liste **stack_b,
+						int mediane, int quartile);
+int					ft_findsmallest(int *arr, int *q1, int *q3, int size);
+int					ft_lastchecker(t_liste **stack);
+
 #endif
