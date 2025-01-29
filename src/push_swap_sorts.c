@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/20 23:09:42 by obajja           ###   ########.fr       */
+/*   Updated: 2025/01/22 12:05:59 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@ void	ft_swapper(t_liste **stack)
 		(*stack)->next->number = temp;
 	}
 }
+
 short	ft_pusher(t_liste **stack_1, t_liste **stack_2)
 {
 	t_liste	*new;
@@ -43,14 +44,14 @@ short	ft_pusher(t_liste **stack_1, t_liste **stack_2)
 	}
 	new = ft_lstnew_push(nb, 0);
 	if (!new)
-		return 1;
+		return (1);
 	if (stack_1 && *stack_1)
 	{
 		new->next = *stack_1;
 		ft_index_decalator(stack_1, 1);
 	}
 	*stack_1 = new;
-	return 0;
+	return (0);
 }
 
 short	ft_rotator(t_liste **stack)
@@ -69,7 +70,7 @@ short	ft_rotator(t_liste **stack)
 	}
 	new = ft_lstnew_push(val, 0);
 	if (!new)
-		return 1;
+		return (1);
 	temp = *stack;
 	while (temp->next != NULL)
 		temp = temp->next;
@@ -77,8 +78,9 @@ short	ft_rotator(t_liste **stack)
 	val = temp->index + 1;
 	new->index = val;
 	ft_index_decalator(stack, -1);
-	return 0;
+	return (0);
 }
+
 short	ft_reverse_rotator(t_liste **stack)
 {
 	t_liste	*temp;
@@ -96,11 +98,11 @@ short	ft_reverse_rotator(t_liste **stack)
 	temp->next = NULL;
 	new = ft_lstnew_push(val, 0);
 	if (!new)
-		return 1;
+		return (1);
 	new->next = *stack;
 	ft_index_decalator(stack, 1);
 	*stack = new;
-	return 0;
+	return (0);
 }
 
 void	ft_index_decalator(t_liste **stack, int decal)
