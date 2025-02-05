@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/22 21:07:55 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/05 11:23:57 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,16 +37,13 @@ long int	ft_atoi_long(const char *str)
 	return (n * s);
 }
 
-int	 ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int i)
+int	ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int i)
 {
 	struct s_liste	*new_node;
 	struct s_liste	*node;
 	int				*arr;
 	int				nb;
 
-	i = 0;
-	nb = 0;
-	node = NULL;
 	nb = ft_atoi(tab[i]);
 	*stack_a = ft_lstnew_push(nb, i);
 	if (!(*stack_a))
@@ -62,7 +59,8 @@ int	 ft_lister(char **tab, t_liste **stack_a, t_liste **stack_b, int i)
 		node = node->next;
 	}
 	arr = ft_array(tab, i);
-	ft_sorting(stack_a, stack_b, arr, i);
+	if (!arr || ft_sorting(stack_a, stack_b, arr, i) == 1)
+		return (-1);
 	return (0);
 }
 
@@ -138,7 +136,7 @@ int	main(int argc, char **argv)
 		if (i < 0)
 			ft_printf("Error: %d", i);
 		else
-			ft_lister(tab, &stack_a, &stack_b, i);
+			ft_lister(tab, &stack_a, &stack_b, 0);
 		ft_freestrs(tab);
 		ft_lstclear_push(&stack_a, &stack_b);
 		return (0);

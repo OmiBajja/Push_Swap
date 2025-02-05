@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/22 17:55:46 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/05 13:23:46 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ int	get_closest_small(int mid, t_liste **stack)
 {
 	t_liste	*temp;
 
+	if (!stack || !(*stack))
+		return (-2);
 	temp = *stack;
 	while (temp->next != NULL && temp->number > mid)
 		temp = temp->next;
@@ -24,6 +26,7 @@ int	get_closest_small(int mid, t_liste **stack)
 	else
 		return (temp->index);
 }
+
 void	ft_min_max_calculator(t_liste **stack, int *min, int *max)
 {
 	t_liste	*temp;
@@ -41,7 +44,7 @@ void	ft_min_max_calculator(t_liste **stack, int *min, int *max)
 	}
 }
 
-short	is_sorted(t_liste **stack_a)
+short	is_sorted(t_liste **stack_a, int n)
 {
 	t_liste	*temp;
 
@@ -52,7 +55,13 @@ short	is_sorted(t_liste **stack_a)
 			return (-1);
 		temp = temp->next;
 	}
-	return (0);
+	if (n == 1)
+	{
+		ft_printf("Sorted\n");
+		return (0);
+	}
+	else
+		return (0);
 }
 
 int	ft_stacksize(t_liste *stack)
@@ -90,7 +99,7 @@ void	ft_3sorter(t_liste **stack_a)
 	}
 	else
 	{
-		if (is_sorted(stack_a) == -1)
+		if (is_sorted(stack_a, 0) == -1)
 			ft_swap_a(stack_a);
 	}
 }
