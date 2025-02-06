@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/22 12:05:59 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/05 10:48:26 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,8 @@ short	ft_rotator(t_liste **stack)
 	int		val;
 
 	val = 0;
+	if (!stack || !*stack || !(*stack)->next)
+		return (1);
 	if (*stack)
 	{
 		temp = (*stack)->next;
