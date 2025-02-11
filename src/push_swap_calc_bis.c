@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/05 16:04:21 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/11 23:55:19 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,29 +77,6 @@ void	ft_pushopti(t_liste **stack_a, t_liste **stack_b, int max, int index)
 		ft_push_a(stack_a, stack_b);
 	}
 }
-
-void	ft_pushmax(t_liste **stack_a, t_liste **stack_b, int max)
-{
-	int	max2;
-	int	max3;
-	int	max4;
-	int	result;
-
-	size = ft_stacksize(*stack_b);
-	while (ft_stacksize(*stack_b) != 0)
-	{
-		ft_min_max_calculator(stack_b, &max2, &max);
-		if (ft_stacksize(*stack_b) > 1)
-			ft_max_two_calculator(stack_b, max, &max2);
-		if (ft_stacksize(*stack_b) > 2)
-			ft_max_two_calculator(stack_b, max2, &max3);
-		if (ft_stacksize(*stack_b) > 3)
-			ft_max_two_calculator(stack_b, max3, &max4);
-		result = ft_most_opti(stack_b, max2, max3, max4);
-	}
-}
-
-
 
 void	ft_pushmax(t_liste **stack_a, t_liste **stack_b, int index2, int index)
 {

@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/05 15:32:29 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/11 23:55:34 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,6 @@ void	ft_firstquarter(t_liste **stack_a, t_liste **stack_b, int q1,
 	if ((*stack_a)->number <= q1)
 	{
 		ft_push_b(stack_a, stack_b);
-		if (*stack_b && (*stack_b)->next)
-		{
-			if ((*stack_a)->number > mediane)
-				ft_rotate_rr(stack_a, stack_b);
-			else
-				ft_rotate_b(stack_b);
-		}
 	}
 	(void)mediane;
 }
@@ -76,15 +69,7 @@ short	ft_firsthalf(t_liste **stack_a, t_liste **stack_b, int mediane, int q1)
 				q1 = ft_push_b(stack_a, stack_b);
 				if (q1 == 1 || get_closest_small(mediane, stack_a) == -2)
 					return (-1);
-				if ((*stack_b) && (*stack_b)->next
-					&& (*stack_b)->number < (*stack_b)->next->number)
-				{
-					if ((*stack_a) && (*stack_a)->next
-						&& (*stack_a)->number > (*stack_a)->next->number)
-						ft_swap_ss(stack_a, stack_b);
-					else
-						ft_swap_b(stack_b);
-				}
+				ft_rotate_b(stack_b);
 			}
 		}
 		else if ((*stack_a)->number > mediane)
@@ -93,31 +78,17 @@ short	ft_firsthalf(t_liste **stack_a, t_liste **stack_b, int mediane, int q1)
 	return (0);
 }
 
-
 int	ft_sorting(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 {
-	int		mediane;
-	int		quartile1;
-	int		quartile2;
-	short	n;
-
 	if (is_sorted(stack_a, 1) == 0)
 		return (0);
 	if (ft_stacksize(*stack_a) < 6)
 		ft_small_sorter(stack_a, stack_b, array, size);
-	else if (size > 100)
+	else if (size >= 300)
 		ft_big_sorter(stack_a, stack_b, array, size);
-	if (size >= 6)
-	{
-		mediane = ft_findmidthird(array, &quartile1, &quartile2, size);
-		n = ft_firsthalf(stack_a, stack_b, mediane, quartile1);
-		if (n == -1)
-			return (free(array), 1);
-		if (quartile1 != quartile2)
-			ft_secondhalf(stack_a, stack_b, mediane, quartile1);
-		ft_lastthird(stack_a, stack_b, mediane, quartile2);
-		ft_3sorter(stack_a);
-		ft_pushmax(stack_a, stack_b, -1, -1);
-	}
+	else if (size >= 50 && size < 300)
+		ft_medium_sorter(stack_a, stack_b, array, size);
+	else if (size >= 6)
+		ft_medium_small_sorter(stack_a, stack_b, array, size);
 	return (free(array), 0);
 }

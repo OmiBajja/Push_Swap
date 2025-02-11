@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/05 15:50:08 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/11 23:21:05 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,5 +76,11 @@ int					ft_small_sorter(t_liste **stack_a, t_liste **stack_b,
 int					ft_big_sorter(t_liste **stack_a, t_liste **stack_b,
 						int *array, int size);
 int					ft_most_opti(t_liste **stack_b, int max2, int max3, int max4);
+int					ft_findbs1(int *arr, int *q1, int i, int size);
+int					ft_findbs2(int *arr, int *q1, int *q3, int size);
+int					ft_findbs_small(int *arr, int *q1, int i, int size);
+int					ft_findbs_small2(int *arr, int *q1, int *q3, int size);
+int					ft_medium_sorter(t_liste **stack_a, t_liste **stack_b, int *array, int size);
+int					ft_medium_small_sorter(t_liste **stack_a, t_liste **stack_b, int *array, int size);
 
 #endif
