@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/05 11:23:57 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/11 17:38:46 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,8 @@ int	ft_check_digit(char **tab)
 	int	j;
 
 	i = 0;
+	if (!tab[i])
+		return (0);
 	while (tab[i])
 	{
 		j = 0;

@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/05 15:58:59 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 00:06:44 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,36 +15,65 @@
 int	ft_big_sorter(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 {
 	int	q1;
-	int	q3;
-	int	n;
+	int	i;
 	int	mediane;
+	int	n;
 
-	mediane = ft_findsmallest(array, &q1, &q3, size);
-	ft_firsthalf(stack_a, stack_b, mediane, q1);
-	mediane = ft_findqoneqthree(array, &q1, &q3, size);
-	n = ft_firsthalf(stack_a, stack_b, mediane, q1);
+	i = 1;
+	while (i < 23)
+	{
+		mediane = ft_findbs1(array, &q1, i, size);
+		n = ft_firsthalf(stack_a, stack_b, mediane, q1);
+		if (n == -1)
+			return (free(array), 1);
+		i++;
+	}
+	mediane = ft_findbs2(array, &q1, &i, size);
+	n = ft_firsthalf(stack_a, stack_b, mediane, i);
+	if (n == -1)
+		return (free(array), 1);
+	ft_3sorter(stack_a);
+	ft_pushmax(stack_a, stack_b, -1, -1);
+	return (0);
+}
+
+int	ft_medium_sorter(t_liste **stack_a, t_liste **stack_b, int *array, int size)
+{
+	int	q1;
+	int	i;
+	int	mediane;
+	int	n;
+
+	i = 1;
+	while (i < 8)
+	{
+		mediane = ft_findbs_small(array, &q1, i, size);
+		n = ft_firsthalf(stack_a, stack_b, mediane, q1);
+		if (n == -1)
+			return (free(array), 1);
+		i++;
+	}
+	mediane = ft_findbs_small2(array, &q1, &i, size);
+	n = ft_firsthalf(stack_a, stack_b, mediane, i);
 	if (n == -1)
 		return (free(array), 1);
 	return (0);
 }
 
-int	ft_most_opti(t_liste **stack_b, int max2, int max3, int max4)
+int	ft_medium_small_sorter(t_liste **stack_a, t_liste **stack_b, int *array,
+		int size)
 {
-	int	index2;
-	int	index3;
-	int	index4;
-	int	result;
+	int		mediane;
+	int		quartile1;
+	int		quartile2;
+	short	n;
 
-	if (ft_stacksize(*stack_b) > 1)
-		index2 = get_index(max2, stack_b);
-	if (ft_stacksize(*stack_b) > 2)
-		index3 = get_index(max3, stack_b);
-	if (ft_stacksize(*stack_b) > 3)
-		index4 = get_index(max4, stack_b);
-	if (index2 <= index3 && index2 <= index4)
-		return (max2);
-	else if (index3 <= index2 && index3 <= index4)
-		return (max3);
-	else
-		return (max4);
+	mediane = ft_findmidthird(array, &quartile1, &quartile2, size);
+	n = ft_firsthalf(stack_a, stack_b, mediane, quartile1);
+	if (n == -1)
+		return (free(array), 1);
+	ft_lastthird(stack_a, stack_b, mediane, quartile2);
+	ft_3sorter(stack_a);
+	ft_pushmax(stack_a, stack_b, -1, -1);
+	return (0);
 }
