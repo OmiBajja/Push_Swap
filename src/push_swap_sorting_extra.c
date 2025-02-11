@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/12 00:06:44 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 00:16:14 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ int	ft_medium_sorter(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 	n = ft_firsthalf(stack_a, stack_b, mediane, i);
 	if (n == -1)
 		return (free(array), 1);
+	ft_3sorter(stack_a);
+	ft_pushmax(stack_a, stack_b, -1, -1);
 	return (0);
 }
 

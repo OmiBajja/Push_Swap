@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/11 23:54:15 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 00:13:40 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,5 +35,5 @@ int	ft_findbs_small2(int *arr, int *q1, int *q3, int size)
 {
 	*q1 = arr[(size * 9) / 10];
 	*q3 = arr[(size - 3)];
-	return (arr[(size - 3)]);
+	return (arr[(size - 4)]);
 }
