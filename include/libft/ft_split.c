@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/14 18:43:20 by obajja            #+#    #+#             */
-/*   Updated: 2025/01/14 15:19:12 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 13:12:36 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,7 +44,7 @@ void	ft_freestrs(char **tab)
 		i++;
 	}
 	free (tab);
-	return;
+	return ;
 }
 
 static char	*ft_wordprinter(char const *s, char c)
