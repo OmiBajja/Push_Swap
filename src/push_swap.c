@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/11 17:38:46 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 13:01:36 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,7 +136,7 @@ int	main(int argc, char **argv)
 	{
 		i = ft_check_error(tab);
 		if (i < 0)
-			ft_printf("Error: %d", i);
+			ft_printf("Error\n");
 		else
 			ft_lister(tab, &stack_a, &stack_b, 0);
 		ft_freestrs(tab);

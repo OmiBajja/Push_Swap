@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/11 23:55:34 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 13:05:35 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,15 @@ void	ft_firstquarter(t_liste **stack_a, t_liste **stack_b, int q1,
 		int mediane)
 {
 	if ((*stack_a)->number <= q1)
-	{
 		ft_push_b(stack_a, stack_b);
+	if (*stack_b && (*stack_b)->next && (*stack_b)->next->number
+		&& (*stack_b)->next->number > (*stack_b)->number)
+	{
+		if (*stack_a && (*stack_a)->next && (*stack_a)->next->number
+			&& (*stack_a)->next->number < (*stack_a)->number)
+			ft_swap_ss(stack_a, stack_b);
+		else
+			ft_swap_b(stack_b);
 	}
 	(void)mediane;
 }
@@ -69,7 +76,10 @@ short	ft_firsthalf(t_liste **stack_a, t_liste **stack_b, int mediane, int q1)
 				q1 = ft_push_b(stack_a, stack_b);
 				if (q1 == 1 || get_closest_small(mediane, stack_a) == -2)
 					return (-1);
-				ft_rotate_b(stack_b);
+				if ((*stack_a)->number > mediane)
+					ft_rotate_rr(stack_a, stack_b);
+				else
+					ft_rotate_b(stack_b);
 			}
 		}
 		else if ((*stack_a)->number > mediane)
