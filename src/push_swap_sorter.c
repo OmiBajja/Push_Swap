@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/12 13:05:35 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/13 16:02:37 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,13 @@ int	ft_findqoneqthree(int *arr, int *q1, int *q3, int size)
 	return (arr[(size * 2) / 4]);
 }
 
-void	ft_firstquarter(t_liste **stack_a, t_liste **stack_b, int q1,
+short	ft_firstquarter(t_liste **stack_a, t_liste **stack_b, int q1,
 		int mediane)
 {
 	if ((*stack_a)->number <= q1)
-		ft_push_b(stack_a, stack_b);
+		mediane = ft_push_b(stack_a, stack_b);
+	if (mediane == 1)
+		return (-1);
 	if (*stack_b && (*stack_b)->next && (*stack_b)->next->number
 		&& (*stack_b)->next->number > (*stack_b)->number)
 	{
@@ -33,10 +35,10 @@ void	ft_firstquarter(t_liste **stack_a, t_liste **stack_b, int q1,
 		else
 			ft_swap_b(stack_b);
 	}
-	(void)mediane;
+	return (0);
 }
 
-void	ft_secondhalf(t_liste **stack_a, t_liste **stack_b, int mediane,
+short	ft_secondhalf(t_liste **stack_a, t_liste **stack_b, int mediane,
 		int quartile)
 {
 	while (ft_stacksize(*stack_a) != 3 && get_closest_small(quartile,
@@ -44,7 +46,9 @@ void	ft_secondhalf(t_liste **stack_a, t_liste **stack_b, int mediane,
 	{
 		if ((*stack_a)->number <= quartile)
 		{
-			ft_push_b(stack_a, stack_b);
+			mediane = ft_push_b(stack_a, stack_b);
+			if (mediane == 1)
+				return (-1);
 			if ((*stack_b)->number < (*stack_b)->next->number
 				&& (*stack_a)->number > (*stack_a)->next->number)
 				ft_rotate_rr(stack_a, stack_b);
@@ -60,7 +64,7 @@ void	ft_secondhalf(t_liste **stack_a, t_liste **stack_b, int mediane,
 		else if ((*stack_a)->number > quartile)
 			ft_rotate_a(stack_a);
 	}
-	(void)mediane;
+	return (0);
 }
 
 short	ft_firsthalf(t_liste **stack_a, t_liste **stack_b, int mediane, int q1)
@@ -90,15 +94,20 @@ short	ft_firsthalf(t_liste **stack_a, t_liste **stack_b, int mediane, int q1)
 
 int	ft_sorting(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 {
+	int	i;
+
+	i = 0;
 	if (is_sorted(stack_a, 1) == 0)
-		return (0);
-	if (ft_stacksize(*stack_a) < 6)
-		ft_small_sorter(stack_a, stack_b, array, size);
+		return (free(array), 0);
+	else if (ft_stacksize(*stack_a) < 6)
+		i = ft_small_sorter(stack_a, stack_b, array, size);
 	else if (size >= 300)
-		ft_big_sorter(stack_a, stack_b, array, size);
+		i = ft_big_sorter(stack_a, stack_b, array, size);
 	else if (size >= 50 && size < 300)
-		ft_medium_sorter(stack_a, stack_b, array, size);
-	else if (size >= 6)
-		ft_medium_small_sorter(stack_a, stack_b, array, size);
+		i = ft_medium_sorter(stack_a, stack_b, array, size);
+	else if (size >= 6 && size < 50)
+		i = ft_medium_small_sorter(stack_a, stack_b, array, size);
+	if (i == -1)
+		return (free (array), 1);
 	return (free(array), 0);
 }

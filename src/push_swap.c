@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/12 13:01:36 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/13 15:59:41 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,8 @@ int	ft_check_digit(char **tab)
 	while (tab[i])
 	{
 		j = 0;
-		if (j == 0 && tab[i][j] == '-' && tab[i][j + 1])
+		if (j == 0 && (tab[i][j] == '-' || tab[i][j] == '+') && tab[i][j
+			+ 1] != '\0')
 			j++;
 		while (tab[i][j])
 		{
@@ -111,7 +112,7 @@ int	ft_check_error(char **tab)
 	while (i-- > 0)
 	{
 		nb = ft_atoi_long(tab[i]);
-		if (nb > 2147483647)
+		if (nb > 2147483647 || nb < -2147483648)
 			return (-3);
 	}
 	return (1);

@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/12 11:52:28 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 13:32:00 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,10 +61,10 @@ void				ft_max_two_calculator(t_liste **stack, int max,
 						int *max_two);
 short				ft_firsthalf(t_liste **stack_a, t_liste **stack_b,
 						int mediane, int quartile);
-void				ft_secondhalf(t_liste **stack_a, t_liste **stack_b,
+short				ft_secondhalf(t_liste **stack_a, t_liste **stack_b,
 						int mediane, int quartile);
 int					ft_findqoneqthree(int *arr, int *q1, int *q3, int size);
-void				ft_firstquarter(t_liste **stack_a, t_liste **stack_b,
+short				ft_firstquarter(t_liste **stack_a, t_liste **stack_b,
 						int q1, int mediane);
 int					ft_findmidthird(int *arr, int *q1, int *q3, int size);
 int					ft_lastthird(t_liste **stack_a, t_liste **stack_b,
