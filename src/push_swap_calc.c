@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/05 13:23:46 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 14:26:35 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,10 +56,7 @@ short	is_sorted(t_liste **stack_a, int n)
 		temp = temp->next;
 	}
 	if (n == 1)
-	{
-		ft_printf("Sorted\n");
 		return (0);
-	}
 	else
 		return (0);
 }

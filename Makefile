@@ -18,18 +18,22 @@ $(OBJDIR)/%.o: $(SRCDIR)/%.c | $(OBJDIR)
 all: LIBFT $(NAME)
 
 LIBFT:
-	@cd include/libft && make && cd ../..
-%.o: %.c
-	@$(CC) $(FLAGS) $(INCLUDE_PATH) -O3 -c $< -o $@
+	@cd include/libft && $(MAKE) all && cd ../..
+
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) $(OBJ) $(LIB_PATH) $(LIB_NAME) $(INCLUDE_PATH) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJ) $(LIB_PATH) $(LIB_NAME) -o $(NAME)
+
+$(OBJDIR):
+	mkdir -p $(OBJDIR)
+
 clean:
-	rm -rf *.o ./$(OBJDIR)/*.o include/libft/*.o src/*.o
-	rm -rf *.d ./$(OBJDIR)/*.d include/libft/*.d src/*.d
+	rm -rf $(OBJDIR)
+	@cd include/libft && $(MAKE) clean && cd ../..
 
 fclean: clean
-	rm -rf $(NAME) libft/libft.a
-re : fclean all
+	rm -rf $(NAME) include/libft/libft.a
+	@cd include/libft && $(MAKE) fclean && cd ../..
 
-listC:
-	@find -wholename "./src/*.c" | cut -c 3- | tr '\n' ' '
+re: fclean all
+
+.PHONY: all clean fclean re LIBFT

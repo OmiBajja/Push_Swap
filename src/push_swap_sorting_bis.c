@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/11 23:10:00 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/12 14:23:42 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,7 +73,7 @@ int	ft_small_sorter(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 	n = ft_findmidthird(array, &q3, &q3, size);
 	n = ft_lastthird(stack_a, stack_b, size, q3);
 	if (n == -1)
-		return (free(array), -1);
+		return (-1);
 	ft_3sorter(stack_a);
 	if (ft_stacksize(*stack_b) > 0)
 	{
