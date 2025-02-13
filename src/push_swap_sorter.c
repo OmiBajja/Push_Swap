@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/13 16:02:37 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/13 19:00:34 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,8 @@ int	ft_sorting(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 	i = 0;
 	if (is_sorted(stack_a, 1) == 0)
 		return (free(array), 0);
+	else if (ft_stacksize(*stack_a) == 2)
+		ft_swap_a(stack_a);
 	else if (ft_stacksize(*stack_a) < 6)
 		i = ft_small_sorter(stack_a, stack_b, array, size);
 	else if (size >= 300)
@@ -108,6 +110,6 @@ int	ft_sorting(t_liste **stack_a, t_liste **stack_b, int *array, int size)
 	else if (size >= 6 && size < 50)
 		i = ft_medium_small_sorter(stack_a, stack_b, array, size);
 	if (i == -1)
-		return (free (array), 1);
+		return (free(array), 1);
 	return (free(array), 0);
 }

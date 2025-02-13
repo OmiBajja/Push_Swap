@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/13 15:59:41 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/14 00:35:15 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,30 +91,28 @@ int	ft_check_digit(char **tab)
 
 int	ft_check_error(char **tab)
 {
-	char		**tester;
-	long int	nb;
+	int			*tester;
 	int			i;
-	int			j;
+	long int	nb;
 
-	tester = tab;
+	tester = NULL;
 	i = -1;
 	if (!ft_check_digit(tab))
 		return (-1);
-	while (tab[++i])
-	{
-		j = i;
-		while (tester[++j])
-		{
-			if (ft_strncmp(tester[j], tab[i], 18) == 0)
-				return (-2);
-		}
-	}
+	i = 0;
+	while (tab[i])
+		i++;
+	tester = (int *)malloc(sizeof(int) * i);
+	if (!tester)
+		return (-1);
 	while (i-- > 0)
 	{
 		nb = ft_atoi_long(tab[i]);
 		if (nb > 2147483647 || nb < -2147483648)
-			return (-3);
+			return (-1);
 	}
+	if (ft_check_double(tab, tester) == -2)
+		return (-1);
 	return (1);
 }
 
@@ -137,7 +135,7 @@ int	main(int argc, char **argv)
 	{
 		i = ft_check_error(tab);
 		if (i < 0)
-			ft_printf("Error\n");
+			ft_putstr_fd("Error\n", 2);
 		else
 			ft_lister(tab, &stack_a, &stack_b, 0);
 		ft_freestrs(tab);

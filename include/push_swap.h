@@ -6,7 +6,7 @@
 /*   By: obajja <obajja@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/14 20:59:14 by obajja            #+#    #+#             */
-/*   Updated: 2025/02/12 13:32:00 by obajja           ###   ########.fr       */
+/*   Updated: 2025/02/13 21:59:31 by obajja           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,5 +85,7 @@ int					ft_medium_sorter(t_liste **stack_a, t_liste **stack_b,
 						int *array, int size);
 int					ft_medium_small_sorter(t_liste **stack_a, t_liste **stack_b,
 						int *array, int size);
+int					ft_check_double(char **tab, int *tester);
+long int			ft_atoi_long(const char *str);
 
 #endif
